@@ -1,0 +1,19 @@
+def combinationSum(candidates, target):
+    ret = []
+    dfs(candidates, target, [], ret)
+    return ret
+    
+def dfs(nums, target, path, ret):
+    if target < 0:
+        return 
+    if target == 0:
+        ret.append(path)
+        return 
+    for i in range(len(nums)):
+        dfs(nums[i:], target-nums[i], path+[nums[i]], ret)
+
+
+candidates = [2,4,6,8]
+target = 8
+
+print(combinationSum(candidates, target))
